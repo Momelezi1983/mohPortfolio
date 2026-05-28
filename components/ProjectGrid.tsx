@@ -1,16 +1,19 @@
 export default function ProjectGrid({ projects }: { projects: any[] }) {
   return (
-    <section className="py-12 px-6">
-      <h2 className="text-2xl font-bold mb-8 text-center">My Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {projects.map((p) => (
-          <div key={p.id} className="p-6 border rounded-xl hover:shadow-xl transition shadow-md">
-            <div className="w-16 h-16 bg-slate-200 rounded-lg mb-4"></div> {/* Logo Placeholder */}
-            <h3 className="font-bold text-xl">{p.title}</h3>
-            <p className="text-slate-600 text-sm mt-2">{p.description}</p>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+      {projects.map((project) => (
+        <a 
+          key={project.id} 
+          href={`/projects/${project.id}`} 
+          className="block border rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+        >
+          <div className="p-5">
+            <h2 className="text-xl font-bold mb-2">{project.name}</h2>
+            <p className="text-gray-600 line-clamp-3">{project.description}</p>
+            <span className="text-blue-500 mt-4 block font-medium">View Details →</span>
           </div>
-        ))}
-      </div>
-    </section>
+        </a>
+      ))}
+    </div>
   );
 }
